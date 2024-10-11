@@ -194,7 +194,8 @@ p_group_by_mean <- results %>%
   ) +
   theme(
     axis.text.x = element_text(angle = 55, hjust = 1)
-  )
+  ) +
+  scale_y_continuous(trans='log10')
 
 
 # Calculate left_join -----------------------------------------------------
@@ -318,7 +319,8 @@ p_left_join <- results2 %>%
   ) +
   theme(
     axis.text.x = element_text(angle = 55, hjust = 1)
-  )
+  ) +
+  scale_y_continuous(trans='log10')
 
 # Merge plots -------------------------------------------------------------
 
@@ -328,7 +330,7 @@ p_all <- (p_group_by_mean / p_left_join) +
     title = "Compute times of different sized datasets (small/mid/large)",
     subtitle = str_wrap(
       'Packages except for dplyr require some kind of "preprocessing" of the dataset beforehand. For example dtplyr uses the
-                  function lazy_dt() to convert the dataframe to a "lazy" data table. This is noted on the x axis.',
+                  function lazy_dt() to convert the dataframe to a "lazy" data table. This is noted on the x axis. Note the log scale on the y axis',
       width = 120
     )
   )
